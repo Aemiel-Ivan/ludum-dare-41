@@ -18,13 +18,14 @@ public class RoomUnit : MonoBehaviour, FlagSubscriber {
     private SpriteRenderer renderer;
     private Rigidbody2D rbody;
 
-    private static Color activeColor = Color.white;
+    private Color activeColor = Color.white;
     private static Color inactiveColor = Color.gray;
 
 	void Awake () {
         collider = GetComponent<Collider2D>();
         renderer = GetComponent<SpriteRenderer>();
         rbody = GetComponent<Rigidbody2D>();
+        activeColor = renderer.color;
 	}
 
     void Update ()
