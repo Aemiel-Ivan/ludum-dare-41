@@ -33,14 +33,12 @@ public class RoomUnit : MonoBehaviour, FlagSubscriber {
         if (moving && active)
         {
             Vector3 nextPos = Vector3.MoveTowards(rbody.position, targetPos, moveSpeed * Time.deltaTime);
-            Vector2 posDelta = new Vector2(nextPos.x, nextPos.y) - rbody.position;
 
             if ((nextPos-targetPos).magnitude < 0.0001)
             {
                 targetPos = (targetPos == startPos) ? endPos : startPos;
             }
-
-            // rbody.MovePosition(nextPos);
+            
             transform.position = nextPos;
         }
     }

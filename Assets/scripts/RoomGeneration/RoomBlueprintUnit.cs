@@ -5,33 +5,33 @@ using UnityEngine;
 [System.Serializable]
 public class RoomBlueprintUnit {
     [SerializeField]
-    private int startX;
+    protected int startX;
 
     [SerializeField]
-    private int startY;
+    protected int startY;
 
     [SerializeField]
-    private int width;
+    protected int width;
 
     [SerializeField]
-    private int height;
+    protected int height;
     
     [SerializeField]
-    private string movingFlag;
+    protected string movingFlag;
 
     [SerializeField]
-    private string activeFlag;
+    protected string activeFlag;
 
     [SerializeField]
-    private int moveX;
+    protected int moveX;
 
     [SerializeField]
-    private int moveY;
+    protected int moveY;
 
     [SerializeField]
-    private float moveSpeed;
+    protected float moveSpeed;
 
-    public GameObject construct(GameObject prefab, Transform parent)
+    public virtual GameObject construct(GameObject prefab, Transform parent)
     {
         GameObject created = MapCreator.construct(startX, startY, width, height, prefab, parent);
 

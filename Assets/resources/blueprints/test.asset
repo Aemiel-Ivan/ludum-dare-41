@@ -12,31 +12,42 @@ MonoBehaviour:
   m_Name: test
   m_EditorClassIdentifier: 
   blocks:
-  - startX: 3
-    startY: 2
-    width: 3
+  - startX: 1
+    startY: 8
+    width: 10
     height: 1
     movingFlag: F
     activeFlag: T
     moveX: 0
     moveY: 0
     moveSpeed: 0
-  - startX: 4
-    startY: 3
-    width: 1
-    height: 2
-    movingFlag: F
-    activeFlag: T
-    moveX: 0
-    moveY: 0
-    moveSpeed: 0
-  - startX: 10
-    startY: 3
-    width: 3
+  - startX: 9
+    startY: 5
+    width: 5
     height: 1
     movingFlag: T
     activeFlag: T
-    moveX: -2
-    moveY: -1
-    moveSpeed: 2
-  movableBlocks: []
+    moveX: 0
+    moveY: -3
+    moveSpeed: 1
+  movableBlocks:
+  - startX: 3
+    startY: 10
+    width: 1
+    height: 1
+    movingFlag: F
+    activeFlag: T
+    moveX: 0
+    moveY: 0
+    moveSpeed: 0
+  spikes:
+  - startX: 1
+    startY: 1
+    width: 1
+    height: 1
+    movingFlag: T
+    activeFlag: T
+    moveX: 0
+    moveY: 5
+    moveSpeed: 1
+  switches: []

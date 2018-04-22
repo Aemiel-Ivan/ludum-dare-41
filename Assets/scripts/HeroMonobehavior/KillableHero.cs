@@ -9,7 +9,7 @@ public class KillableHero : MonoBehaviour {
     [SerializeField]
     private float sleepTime;
 
-    private Rigidbody2D rbody;
+    private SpriteRenderer spriteRenderer;
     private float sleepRemaining;
     private bool alive;
 
@@ -19,7 +19,7 @@ public class KillableHero : MonoBehaviour {
 
     private void Awake ()
     {
-        rbody = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
@@ -31,8 +31,7 @@ public class KillableHero : MonoBehaviour {
             if (sleepRemaining <= 0)
             {
                 alive = true;
-                gameObject.SetActive(true);
-                rbody.MovePosition(spawnPoint);
+                spriteRenderer.enabled = true;
             }
         }
     }
@@ -41,6 +40,8 @@ public class KillableHero : MonoBehaviour {
     {
         sleepRemaining = sleepTime;
         alive = false;
-        gameObject.SetActive(false);
+        spriteRenderer.enabled = false;
+        transform.SetParent(transform.root);
+        transform.position = spawnPoint;
     }
 }
