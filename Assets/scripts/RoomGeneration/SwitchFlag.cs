@@ -14,7 +14,7 @@ public class SwitchFlag : Interactable {
 
     public void Setup (string flag, string switchable)
     {
-        this.flag = flag;
+        base.Setup(flag);
         this.switchable = switchable;
     }
 

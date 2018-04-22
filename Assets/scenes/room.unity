@@ -118,8 +118,8 @@ GameObject:
   - component: {fileID: 536274279}
   - component: {fileID: 536274280}
   m_Layer: 8
-  m_Name: map
-  m_TagString: Untagged
+  m_Name: Room
+  m_TagString: Room
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -208,7 +208,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9, y: 1.25}
+  m_Size: {x: 0.85, y: 1.25}
   m_EdgeRadius: 0
 --- !u!50 &675715387
 Rigidbody2D:

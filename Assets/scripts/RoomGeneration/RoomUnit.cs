@@ -26,7 +26,21 @@ public class RoomUnit : MonoBehaviour, FlagSubscriber {
         renderer = GetComponent<SpriteRenderer>();
         rbody = GetComponent<Rigidbody2D>();
         activeColor = renderer.color;
-	}
+
+        this.moveSpeed = 0;
+        this.movingFlag = "F";
+        this.activeFlag = "T";
+        this.startPos = transform.position;
+        this.endPos = transform.position;
+        this.targetPos = transform.position;
+
+        moving = false;
+    }
+
+    void Start ()
+    {
+        setActiveFlag(GlobalFlags.IsSet(activeFlag));
+    }
 
     void Update ()
     {
@@ -46,8 +60,10 @@ public class RoomUnit : MonoBehaviour, FlagSubscriber {
     public void Setup(string movingFlag, string activeFlag, float moveSpeed, Vector3 startPos, Vector3 endPos)
     {
         this.moveSpeed = moveSpeed;
-        this.movingFlag = movingFlag;
-        this.activeFlag = activeFlag;
+        if (this.movingFlag != "")
+            this.movingFlag = movingFlag;
+        if (this.activeFlag != "")
+            this.activeFlag = activeFlag;
         this.startPos = startPos;
         this.endPos = endPos;
         this.targetPos = endPos;

@@ -37,8 +37,11 @@ public class GlobalFlags {
 
     public static void Subscribe(FlagSubscriber subs, string flagName)
     {
-        getSubList(flagName)
-            .Add(subs);
+        if (flagName != "")
+        {
+            getSubList(flagName)
+                .Add(subs);
+        }
     }
 
     public static void Unsubscribe(FlagSubscriber subs, string flagName)

@@ -13,11 +13,35 @@ public class RoomMap : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        construct();
+	}
+
+    public void construct ()
+    {
+        if (RoomTracker.CurrentRoom == "")
+        {
+            Debug.Log("EMPTY!");
+            return;
+        }
+
+        deconstruct();
+
         this.currentRoom = RoomTracker.CurrentRoom;
 
         loadWalls();
         loadBlueprint();
-	}
+    }
+
+    private void deconstruct ()
+    {
+        GameObject blockee = GameObject.FindGameObjectWithTag("Blockee");
+        blockee.transform.SetParent(null);
+
+        foreach (Transform child in transform.GetComponentInChildren<Transform>())
+        {
+            Destroy(child.gameObject);
+        }
+    }
 
     private void loadWalls()
     {

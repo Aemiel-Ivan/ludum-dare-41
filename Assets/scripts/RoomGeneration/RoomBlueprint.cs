@@ -88,16 +88,16 @@ public class RoomBlueprint : ScriptableObject {
     }
 
     [SerializeField]
-    private List<RoomBlueprintUnitFlag> doors;
+    private List<RoomBlueprintUnitFlagDoor> doors;
 
     [SerializeField]
-    private List<RoomBlueprintUnit> blocks = new List<RoomBlueprintUnit>();
+    private List<RoomBlueprintUnitDynamic> blocks = new List<RoomBlueprintUnitDynamic>();
 
     [SerializeField]
     private List<RoomBlueprintUnit> movableBlocks = new List<RoomBlueprintUnit>();
 
     [SerializeField]
-    private List<RoomBlueprintUnit> spikes = new List<RoomBlueprintUnit>();
+    private List<RoomBlueprintUnitDynamic> spikes = new List<RoomBlueprintUnitDynamic>();
 
     [SerializeField]
     private List<RoomBlueprintUnitFlag> pressurePlates = new List<RoomBlueprintUnitFlag>();
@@ -134,14 +134,17 @@ public class RoomBlueprint : ScriptableObject {
             block.construct(SwitchPrefab, map.transform);
         }
 
-        foreach (RoomBlueprintUnitFlag block in doors)
-        {
-            block.construct(DoorPrefab, map.transform);
-        }
-
         GameObject blockee = GameObject.FindGameObjectWithTag("Blockee");
-        blockee.transform.position = new Vector3(7, 5, 0);
-        blockee.GetComponent<KillableHero>().spawnPoint = blockee.transform.position;
+
+        foreach (RoomBlueprintUnitFlagDoor block in doors)
+        {
+            Door door = block.construct(DoorPrefab, map.transform).GetComponent<Door>();
+            if (door.LeadsTo(RoomTracker.PreviousRoom))
+            {
+                blockee.transform.position = door.transform.position;
+                blockee.GetComponent<KillableHero>().spawnPoint = door.transform.position;
+            }
+        }
     }
 
     private void Setup ()

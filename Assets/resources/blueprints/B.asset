@@ -9,79 +9,71 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 25c0648d02260014cb3557c45130c5ae, type: 3}
-  m_Name: A
+  m_Name: B
   m_EditorClassIdentifier: 
   doors:
-  - startPosition: {x: 3, y: 1}
+  - startPosition: {x: 10, y: 1}
     dimensions: {x: 2, y: 3}
     flag: T
     room: Section 1-2
   blocks:
-  - startPosition: {x: 1, y: 1}
+  - startPosition: {x: 2, y: 4}
+    dimensions: {x: 2, y: 1}
+    movingFlag: A
+    activeFlag: T
+    movement: {x: 0, y: -3}
+    moveSpeed: 3
+  - startPosition: {x: 6, y: 5}
     dimensions: {x: 2, y: 1}
     movingFlag: F
     activeFlag: T
     movement: {x: 0, y: 0}
     moveSpeed: 0
-  - startPosition: {x: 1, y: 2}
+  - startPosition: {x: 9, y: 5}
     dimensions: {x: 1, y: 1}
     movingFlag: F
     activeFlag: T
     movement: {x: 0, y: 0}
     moveSpeed: 0
-  - startPosition: {x: 3, y: 4}
-    dimensions: {x: 2, y: 1}
+  - startPosition: {x: 11, y: 7}
+    dimensions: {x: 1, y: 1}
     movingFlag: F
     activeFlag: T
     movement: {x: 0, y: 0}
     moveSpeed: 0
-  - startPosition: {x: 11, y: 3}
+  - startPosition: {x: 12, y: 7}
+    dimensions: {x: 2, y: 2}
+    movingFlag: F
+    activeFlag: T
+    movement: {x: 0, y: 0}
+    moveSpeed: 0
+  - startPosition: {x: 13, y: 5}
+    dimensions: {x: 1, y: 1}
+    movingFlag: F
+    activeFlag: T
+    movement: {x: 0, y: 0}
+    moveSpeed: 0
+  - startPosition: {x: 3, y: 8}
     dimensions: {x: 2, y: 1}
     movingFlag: T
-    activeFlag: B
-    movement: {x: -5, y: 0}
+    activeFlag: T
+    movement: {x: 5, y: 0}
     moveSpeed: 3
-  - startPosition: {x: 9, y: 5}
-    dimensions: {x: 3, y: 1}
-    movingFlag: F
-    activeFlag: T
-    movement: {x: 0, y: 0}
-    moveSpeed: 0
-  - startPosition: {x: 11, y: 6}
-    dimensions: {x: 1, y: 1}
-    movingFlag: F
-    activeFlag: T
-    movement: {x: 0, y: 0}
-    moveSpeed: 0
-  - startPosition: {x: 13, y: 8}
-    dimensions: {x: 1, y: 3}
-    movingFlag: F
-    activeFlag: T
-    movement: {x: 0, y: 0}
-    moveSpeed: 0
-  - startPosition: {x: 6, y: 8}
-    dimensions: {x: 3, y: 1}
-    movingFlag: F
-    activeFlag: T
-    movement: {x: 0, y: 0}
-    moveSpeed: 0
-  - startPosition: {x: 1, y: 8}
-    dimensions: {x: 4, y: 1}
-    movingFlag: F
-    activeFlag: T
-    movement: {x: 0, y: 0}
-    moveSpeed: 0
   movableBlocks: []
   spikes:
-  - startPosition: {x: 4, y: 9}
+  - startPosition: {x: 5, y: 1}
     dimensions: {x: 1, y: 1}
     movingFlag: T
     activeFlag: T
-    movement: {x: 8, y: 0}
-    moveSpeed: 2
+    movement: {x: 4, y: 0}
+    moveSpeed: 3
   pressurePlates: []
   switches:
+  - startPosition: {x: 13, y: 2}
+    dimensions: {x: 1, y: 1}
+    flag: B
+    switchable: F
   - startPosition: {x: 2, y: 9}
     dimensions: {x: 1, y: 1}
-    flag: A
+    flag: S1
     switchable: F
