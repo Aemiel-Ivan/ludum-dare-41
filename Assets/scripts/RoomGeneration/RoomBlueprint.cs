@@ -8,6 +8,7 @@ public class RoomBlueprint : ScriptableObject {
     private static GameObject moveBlockPrefab;
     private static GameObject spikePrefab;
     private static GameObject switchPrefab;
+    private static GameObject pressurePlatePrefab;
 
     public static GameObject BlockPrefab {
         get
@@ -59,6 +60,19 @@ public class RoomBlueprint : ScriptableObject {
         }
     }
 
+    public static GameObject PressurePlatePrefab
+    {
+        get
+        {
+            if (pressurePlatePrefab == null)
+            {
+                pressurePlatePrefab = Resources.Load<GameObject>("prefabs/blocks/pressure plate");
+            }
+
+            return pressurePlatePrefab;
+        }
+    }
+
     [SerializeField]
     private List<RoomBlueprintUnit> blocks = new List<RoomBlueprintUnit>();
 
@@ -69,7 +83,10 @@ public class RoomBlueprint : ScriptableObject {
     private List<RoomBlueprintUnit> spikes = new List<RoomBlueprintUnit>();
 
     [SerializeField]
-    private List<RoomBlueprintUnitSwitch> switches = new List<RoomBlueprintUnitSwitch>();
+    private List<RoomBlueprintUnitFlag> pressurePlates = new List<RoomBlueprintUnitFlag>();
+
+    [SerializeField]
+    private List<RoomBlueprintUnitFlagSwitch> switches = new List<RoomBlueprintUnitFlagSwitch>();
 
     public void construct(GameObject map)
     {
@@ -90,7 +107,12 @@ public class RoomBlueprint : ScriptableObject {
             block.construct(SpikePrefab, map.transform);
         }
 
-        foreach (RoomBlueprintUnitSwitch block in switches)
+        foreach (RoomBlueprintUnitFlag block in pressurePlates)
+        {
+            block.construct(PressurePlatePrefab, map.transform);
+        }
+
+        foreach (RoomBlueprintUnitFlagSwitch block in switches)
         {
             block.construct(SwitchPrefab, map.transform);
         }
