@@ -4,15 +4,6 @@ using UnityEngine;
 
 public class Jumper : Faller {
 
-    [SerializeField]
-    private float jumpHeight;
-
-    [SerializeField]
-    private float hangTime;
-
-    private Collider2D collider;
-    private Animator animator;
-
     private bool jump;
     private float jumpVelocity;
 
@@ -23,10 +14,7 @@ public class Jumper : Faller {
     public override void MoverAwake (Collider2D collider, Animator animator)
     {
         base.MoverAwake(collider, animator);
-        this.collider = collider;
-        this.animator = animator;
 
-        this.gravityDesc = (2 * jumpHeight) / (hangTime * hangTime);
         this.jumpVelocity = gravityDesc * hangTime;
         this.jump = false;
         this.touchingCeil = false;
@@ -64,7 +52,9 @@ public class Jumper : Faller {
             currentVelocity -= (gravityDesc * Time.fixedDeltaTime);
         }
 
-        return (Vector2.up * vDisplacement);
+        Vector2 posDelta = (Vector2.up * vDisplacement);
+
+        return posDelta;
     }
 
     protected void UpdateTouchCeil (int points)

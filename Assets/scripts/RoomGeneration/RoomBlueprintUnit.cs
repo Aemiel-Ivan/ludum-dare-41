@@ -35,15 +35,14 @@ public class RoomBlueprintUnit {
     {
         GameObject created = MapCreator.construct(startX, startY, width, height, prefab, parent);
 
-        bool moving = GlobalFlags.IsSet(movingFlag);
-        bool active = GlobalFlags.IsSet(activeFlag);
-
-        if (active && moving)
-        {
-            // TODO
-        }
-
-        created.SetActive(active);
+        RoomUnit unit = created.GetComponent<RoomUnit>();
+        unit.Setup(
+            movingFlag,
+            activeFlag,
+            moveSpeed,
+            created.transform.position,
+            created.transform.position + new Vector3(moveX, moveY)
+            );
 
         return created;
     }

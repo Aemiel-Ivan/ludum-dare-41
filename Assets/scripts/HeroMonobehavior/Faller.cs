@@ -5,6 +5,12 @@ using UnityEngine;
 public class Faller : Mover
 {
     [SerializeField]
+    protected float fallHeight;
+
+    [SerializeField]
+    protected float hangTime;
+
+    [SerializeField]
     protected float raycastOffset;
 
     [SerializeField]
@@ -19,15 +25,17 @@ public class Faller : Mover
 
     protected Collider2D collider;
     protected Animator animator;
+    protected Rigidbody2D rbody;
 
     protected float gravityDesc;
     protected float currentVelocity;
-
+    protected RoomUnit footing;
 
     public override void MoverAwake(Collider2D collider, Animator animator)
     {
         this.collider = collider;
         this.animator = animator;
+        this.gravityDesc = (2 * fallHeight) / (hangTime * hangTime);
         this.platformLayer = LayerMask.NameToLayer("Platform");
 
         this.raycastDist = this.collider.bounds.extents.y + raycastOffset;
@@ -42,12 +50,6 @@ public class Faller : Mover
     public override Vector2 MoverFixedUpdate()
     {
         UpdateGrounded(3);
-        animator.SetBool("Grounded", this.grounded);
-
-        if (grounded)
-        {
-            currentVelocity = 0;
-        }
 
         float vDisplacement = currentVelocity * Time.fixedDeltaTime;
 
@@ -55,8 +57,30 @@ public class Faller : Mover
         {
             currentVelocity -= (gravityDesc * Time.fixedDeltaTime);
         }
+        else
+        {
+            currentVelocity = 0;
+        }
 
-        return (Vector2.up * vDisplacement);
+        Vector2 posDelta = (Vector2.up * vDisplacement);
+
+        return posDelta;
+    }
+
+    private void setGrounded (RaycastHit2D hit)
+    {
+        this.grounded = (hit != false && hit.transform != transform);
+        
+        if (this.grounded)
+        {
+            footing = hit.transform.GetComponent<RoomUnit>();
+            transform.SetParent(footing.transform);
+        }
+        else if (footing != null)
+        {
+            footing = null;
+            transform.SetParent(transform.root);
+        }
     }
 
     protected void UpdateGrounded(int points)
@@ -65,12 +89,14 @@ public class Faller : Mover
 
         if (points <= 1)
         {
-            this.grounded = Physics2D.Raycast(
+            RaycastHit2D hit = Physics2D.Raycast(
                 baseSource,
                 Vector2.down,
                 raycastDist,
                 1 << platformLayer
             );
+
+            setGrounded(hit);
 
             return;
         }
@@ -81,12 +107,14 @@ public class Faller : Mover
 
         for (Vector2 source = basePoint; source.x <= limitX; source.x += interval)
         {
-            this.grounded = Physics2D.Raycast(
+            RaycastHit2D hit = Physics2D.Raycast(
                 source,
                 Vector2.down,
                 raycastDist,
                 1 << platformLayer
             );
+
+            setGrounded(hit);
 
             if (this.grounded)
             {
@@ -95,5 +123,10 @@ public class Faller : Mover
         }
 
         this.grounded = false;
+        if (footing != null)
+        {
+            footing = null;
+            transform.SetParent(transform.root);
+        }
     }
 }

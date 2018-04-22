@@ -30,21 +30,13 @@ MonoBehaviour:
     moveX: 0
     moveY: 0
     moveSpeed: 0
-  - startX: 8
-    startY: 4
-    width: 2
-    height: 1
-    movingFlag: F
-    activeFlag: T
-    moveX: 0
-    moveY: 0
-    moveSpeed: 0
   - startX: 10
     startY: 3
     width: 3
     height: 1
-    movingFlag: F
+    movingFlag: T
     activeFlag: T
-    moveX: 0
-    moveY: 0
-    moveSpeed: 0
+    moveX: -2
+    moveY: -1
+    moveSpeed: 2
+  movableBlocks: []
