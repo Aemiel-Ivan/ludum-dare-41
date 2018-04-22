@@ -5,16 +5,10 @@ using UnityEngine;
 [System.Serializable]
 public class RoomBlueprintUnit {
     [SerializeField]
-    protected int startX;
+    protected Vector2 startPosition;
 
     [SerializeField]
-    protected int startY;
-
-    [SerializeField]
-    protected int width;
-
-    [SerializeField]
-    protected int height;
+    protected Vector2 dimensions;
     
     [SerializeField]
     protected string movingFlag;
@@ -23,17 +17,14 @@ public class RoomBlueprintUnit {
     protected string activeFlag;
 
     [SerializeField]
-    protected int moveX;
-
-    [SerializeField]
-    protected int moveY;
+    protected Vector2 movement;
 
     [SerializeField]
     protected float moveSpeed;
 
     public virtual GameObject construct(GameObject prefab, Transform parent)
     {
-        GameObject created = MapCreator.construct(startX, startY, width, height, prefab, parent);
+        GameObject created = MapCreator.construct(startPosition, dimensions, prefab, parent);
 
         RoomUnit unit = created.GetComponent<RoomUnit>();
         unit.Setup(
@@ -41,7 +32,7 @@ public class RoomBlueprintUnit {
             activeFlag,
             moveSpeed,
             created.transform.position,
-            created.transform.position + new Vector3(moveX, moveY)
+            created.transform.position + (Vector3) movement
             );
 
         return created;

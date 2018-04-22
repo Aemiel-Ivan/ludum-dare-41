@@ -3,9 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SwitchFlag : Interactable {
+    
+    private string switchable;
 
-    private string flag;
-    private string switchable; 
+    public override void Setup (string flag)
+    {
+        base.Setup(flag);
+        this.switchable = "F";
+    }
 
     public void Setup (string flag, string switchable)
     {

@@ -166,8 +166,8 @@ GameObject:
   - component: {fileID: 675715393}
   - component: {fileID: 675715394}
   m_Layer: 0
-  m_Name: blockee
-  m_TagString: Untagged
+  m_Name: Blockee
+  m_TagString: Blockee
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -351,7 +351,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f16cfa9ca976b184dbae1e59a9a7622a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactButton: 
 --- !u!1 &1479240737
 GameObject:
   m_ObjectHideFlags: 0

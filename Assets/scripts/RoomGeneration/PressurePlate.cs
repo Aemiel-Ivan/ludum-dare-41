@@ -2,14 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PressurePlate : MonoBehaviour {
-
-    private string flag;
-
-	public void Setup (string flag)
-    {
-        this.flag = flag;
-    }
+public class PressurePlate : Interactable {
 
     public void OnTriggerEnter2D(Collider2D collider)
     {

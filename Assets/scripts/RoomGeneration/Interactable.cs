@@ -4,7 +4,14 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour {
 
-	public virtual void Interact()
+    protected string flag;
+
+    public virtual void Setup(string flag)
+    {
+        this.flag = flag;
+    }
+
+    public virtual void Interact()
     {
         
     }

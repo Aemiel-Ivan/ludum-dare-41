@@ -12,10 +12,10 @@ public class RoomBlueprintUnitFlag : RoomBlueprintUnit {
     {
         GameObject created = base.construct(prefab, parent);
 
-        PressurePlate pressurePlate = created.GetComponent<PressurePlate>();
-        if (pressurePlate != null)
+        Interactable interactable = created.GetComponent<Interactable>();
+        if (interactable != null)
         {
-            pressurePlate.Setup(
+            interactable.Setup(
                 flag
                 );
         }

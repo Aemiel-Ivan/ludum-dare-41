@@ -5,10 +5,11 @@ using UnityEngine;
 [CreateAssetMenu]
 public class RoomBlueprint : ScriptableObject {
     private static GameObject blockPrefab;
-    private static GameObject moveBlockPrefab;
+    private static GameObject movableBlockPrefab;
     private static GameObject spikePrefab;
     private static GameObject switchPrefab;
     private static GameObject pressurePlatePrefab;
+    private static GameObject doorPrefab;
 
     public static GameObject BlockPrefab {
         get
@@ -25,12 +26,12 @@ public class RoomBlueprint : ScriptableObject {
     public static GameObject MovableBlockPrefab {
         get
         {
-            if (moveBlockPrefab == null)
+            if (movableBlockPrefab == null)
             {
-                moveBlockPrefab = Resources.Load<GameObject>("prefabs/blocks/movable block");
+                movableBlockPrefab = Resources.Load<GameObject>("prefabs/blocks/movable block");
             }
 
-            return moveBlockPrefab;
+            return movableBlockPrefab;
         }
     }
 
@@ -73,6 +74,22 @@ public class RoomBlueprint : ScriptableObject {
         }
     }
 
+    public static GameObject DoorPrefab
+    {
+        get
+        {
+            if (doorPrefab == null)
+            {
+                doorPrefab = Resources.Load<GameObject>("prefabs/blocks/door");
+            }
+
+            return doorPrefab;
+        }
+    }
+
+    [SerializeField]
+    private List<RoomBlueprintUnitFlag> doors;
+
     [SerializeField]
     private List<RoomBlueprintUnit> blocks = new List<RoomBlueprintUnit>();
 
@@ -90,7 +107,7 @@ public class RoomBlueprint : ScriptableObject {
 
     public void construct(GameObject map)
     {
-        setup();
+        Setup();
 
         foreach (RoomBlueprintUnit block in blocks)
         {
@@ -116,9 +133,18 @@ public class RoomBlueprint : ScriptableObject {
         {
             block.construct(SwitchPrefab, map.transform);
         }
+
+        foreach (RoomBlueprintUnitFlag block in doors)
+        {
+            block.construct(DoorPrefab, map.transform);
+        }
+
+        GameObject blockee = GameObject.FindGameObjectWithTag("Blockee");
+        blockee.transform.position = new Vector3(7, 5, 0);
+        blockee.GetComponent<KillableHero>().spawnPoint = blockee.transform.position;
     }
 
-    private void setup ()
+    private void Setup ()
     {
 
     }
