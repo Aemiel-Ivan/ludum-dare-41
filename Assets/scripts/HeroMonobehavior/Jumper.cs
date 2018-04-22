@@ -16,6 +16,9 @@ public class Jumper : Faller {
     private bool jump;
     private float jumpVelocity;
 
+    [SerializeField]
+    private bool touchingCeil;
+
 
     public override void MoverAwake (Collider2D collider, Animator animator)
     {
@@ -26,6 +29,7 @@ public class Jumper : Faller {
         this.gravityDesc = (2 * jumpHeight) / (hangTime * hangTime);
         this.jumpVelocity = gravityDesc * hangTime;
         this.jump = false;
+        this.touchingCeil = false;
     }
 
     public override void MoverUpdate ()
@@ -38,12 +42,19 @@ public class Jumper : Faller {
     public override Vector2 MoverFixedUpdate()
     {
         UpdateGrounded(3);
+        UpdateTouchCeil(3);
+
         animator.SetBool("Grounded", this.grounded);
-        
+
         if (grounded)
         {
             currentVelocity = jump ? jumpVelocity : 0;
             jump = false;
+        }
+
+        if (touchingCeil && currentVelocity > 0)
+        {
+            currentVelocity = 0;
         }
 
         float vDisplacement = currentVelocity * Time.fixedDeltaTime;
@@ -54,5 +65,43 @@ public class Jumper : Faller {
         }
 
         return (Vector2.up * vDisplacement);
+    }
+
+    protected void UpdateTouchCeil (int points)
+    {
+        Vector2 baseSource = (Vector2)transform.position + collider.offset;
+
+        if (points <= 1)
+        {
+            this.touchingCeil = Physics2D.Raycast(
+                baseSource,
+                Vector2.up,
+                raycastDist,
+                1 << platformLayer
+            );
+
+            return;
+        }
+
+        float limitX = baseSource.x + checkingWidth / 2;
+        float interval = checkingWidth / (points - 1);
+        Vector2 basePoint = baseSource - new Vector2(checkingWidth / 2, 0);
+
+        for (Vector2 source = basePoint; source.x <= limitX; source.x += interval)
+        {
+            this.touchingCeil = Physics2D.Raycast(
+                source,
+                Vector2.up,
+                raycastDist,
+                1 << platformLayer
+            );
+
+            if (this.touchingCeil)
+            {
+                return;
+            }
+        }
+
+        this.touchingCeil = false;
     }
 }
