@@ -14,7 +14,7 @@ public class HallMap : MonoBehaviour {
 	void construct () {
         this.currentRoom = RoomTracker.CurrentRoom;
 
-        HallBlueprint blueprint = Resources.Load<HallBlueprint>("blueprints/" + currentRoom);
+        HallBlueprint blueprint = Resources.Load<HallBlueprint>("blueprints/halls/" + currentRoom);
         blueprint.Construct(gameObject);
     }
 }

@@ -55,7 +55,7 @@ public class RoomMap : MonoBehaviour {
 	
 	private void loadBlueprint ()
     {
-        blueprint = Resources.Load<RoomBlueprint>("blueprints/" + currentRoom);
+        blueprint = Resources.Load<RoomBlueprint>("blueprints/rooms/" + currentRoom);
         blueprint.construct(gameObject);
     }
 }
