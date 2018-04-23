@@ -11,4 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 491d7bd46596c2b44b4ea304771638b8, type: 3}
   m_Name: test
   m_EditorClassIdentifier: 
-  blockeeInitialPosition: {x: 0, y: 0}
+  blockeeInitialPosition: {x: 0, y: -4}
+  enemies:
+  - initialPosition: {x: 0, y: 9}
+    enemyPrefab: {fileID: 1598259252942562, guid: e98b160a4a5469a4f94da9a1b0099c4d,
+      type: 2}
+    readyPosition: {x: 0, y: 5}
+    positioningDuration: 1

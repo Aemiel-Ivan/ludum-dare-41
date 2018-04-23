@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class AutomovementBehavior : MonoBehaviour {
 
-    private Rigidbody2D rbody;
+    protected Rigidbody2D rbody;
     
     private Vector2 readyPosition;
     private float positioningSpeed;
@@ -17,7 +17,7 @@ public abstract class AutomovementBehavior : MonoBehaviour {
 
     public void Setup(Vector2 initialPosition, Vector2 readyPosition, float positioningDuration)
     {
-        rbody.MovePosition(initialPosition);
+        transform.position = initialPosition;
         this.readyPosition = readyPosition;
         this.positioningSpeed = (readyPosition - initialPosition).magnitude / positioningDuration;
         this.positioned = false;
@@ -27,7 +27,11 @@ public abstract class AutomovementBehavior : MonoBehaviour {
     {
 		if (positioned)
         {
-            float displacement = positioningSpeed * Time.deltaTime;
+            Move();
+        }
+        else
+        {
+            float displacement = positioningSpeed * Time.fixedDeltaTime;
             Vector2 nextPosition = Vector2.MoveTowards(rbody.position, readyPosition, displacement);
             rbody.MovePosition(nextPosition);
 
@@ -35,10 +39,6 @@ public abstract class AutomovementBehavior : MonoBehaviour {
             {
                 positioned = true;
             }
-        }
-        else
-        {
-            Move();
         }
 	}
 
