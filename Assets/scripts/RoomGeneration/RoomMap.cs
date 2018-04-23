@@ -47,10 +47,10 @@ public class RoomMap : MonoBehaviour {
     {
         GameObject blockPrefab = RoomBlueprint.BlockPrefab;
 
-        MapCreator.construct(new Vector2(0, floorY), new Vector2(15, 1), blockPrefab, this.transform);
-        MapCreator.construct(new Vector2(0, ceilY), new Vector2(15, 1), blockPrefab, this.transform);
-        MapCreator.construct(new Vector2(leftWallX, floorY + 1), new Vector2(1, 10), blockPrefab, this.transform);
-        MapCreator.construct(new Vector2(rightWallX, floorY + 1), new Vector2(1, 10), blockPrefab, this.transform);
+        RoomCreator.construct(new Vector2(0, floorY), new Vector2(15, 1), blockPrefab, this.transform);
+        RoomCreator.construct(new Vector2(0, ceilY), new Vector2(15, 1), blockPrefab, this.transform);
+        RoomCreator.construct(new Vector2(leftWallX, floorY + 1), new Vector2(1, 10), blockPrefab, this.transform);
+        RoomCreator.construct(new Vector2(rightWallX, floorY + 1), new Vector2(1, 10), blockPrefab, this.transform);
     }
 	
 	private void loadBlueprint ()

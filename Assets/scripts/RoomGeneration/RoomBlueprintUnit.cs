@@ -12,7 +12,7 @@ public class RoomBlueprintUnit {
 
     public virtual GameObject construct(GameObject prefab, Transform parent)
     {
-        GameObject created = MapCreator.construct(startPosition, dimensions, prefab, parent);
+        GameObject created = RoomCreator.construct(startPosition, dimensions, prefab, parent);
 
         return created;
     }

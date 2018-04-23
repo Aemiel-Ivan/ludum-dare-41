@@ -48,14 +48,10 @@ public class MoveManager : MonoBehaviour {
             Flip();
         }
 
-        Debug.Log(movement);
-
         if (speedLimit != 0)
         {
             movement = movement.normalized * speedLimit * Time.fixedDeltaTime;
         }
-
-        Debug.Log(movement);
 
         rbody.MovePosition(rbody.position + movement);
     }
