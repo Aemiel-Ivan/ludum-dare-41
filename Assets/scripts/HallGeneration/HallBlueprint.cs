@@ -11,15 +11,11 @@ public class HallBlueprint : ScriptableObject {
     [SerializeField]
     List<HallBlueprintEnemy> enemies;
 
-    void OnEnable()
-    {
-        GameObject.FindGameObjectWithTag("Blockee")
-            .GetComponent<Rigidbody2D>()
-            .MovePosition(blockeeInitialPosition);
-    }
-
     public void Construct (GameObject map)
     {
+        GameObject.FindGameObjectWithTag("Blockee")
+            .transform.position = blockeeInitialPosition;
+
         foreach (HallBlueprintEnemy enemy in enemies)
         {
             enemy.Spawn(map.transform);
