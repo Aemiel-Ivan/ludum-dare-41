@@ -41,7 +41,7 @@ public abstract class Shooter : MonoBehaviour {
         {
             restToRep -= Time.deltaTime;
         }
-        else
+        else if (Shooting)
         {
             List<Vector2> directions = GetDirections();
 
