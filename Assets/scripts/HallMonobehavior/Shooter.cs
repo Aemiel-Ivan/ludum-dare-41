@@ -67,6 +67,6 @@ public abstract class Shooter : MonoBehaviour {
 
     private GameObject SpawnBullet ()
     {
-        return Instantiate(bulletPrefab);
+        return ObjectPool.Instance.GetObject(bulletPrefab);
     }
 }

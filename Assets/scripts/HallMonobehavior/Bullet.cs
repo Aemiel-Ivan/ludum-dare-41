@@ -46,6 +46,6 @@ public class Bullet : MonoBehaviour {
 
     private void Despawn()
     {
-        DestroyObject(gameObject);
+        ObjectPool.Instance.ReleaseObject(gameObject);
     }
 }
