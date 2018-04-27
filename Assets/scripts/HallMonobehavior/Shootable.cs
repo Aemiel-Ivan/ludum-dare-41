@@ -4,4 +4,7 @@ using UnityEngine;
 
 public abstract class Shootable: MonoBehaviour {
     public abstract void TakeDamage();
+    public virtual void ResetHealth ()
+    {
+    }
 }

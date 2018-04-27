@@ -18,7 +18,10 @@ public class HallBlueprintEnemy {
     
     public GameObject Spawn (Transform parent)
     {
-        GameObject enemy = GameObject.Instantiate(enemyPrefab, parent);
+        GameObject enemy = ObjectPool.Instance.GetObject(enemyPrefab);
+
+        enemy.GetComponent<EnemyShootable>()
+            .ResetHealth();
 
         if (positioningDuration > 0)
         {

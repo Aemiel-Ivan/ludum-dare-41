@@ -23,14 +23,20 @@ public class EnemyShootable : Shootable {
             if (emitter != null)
             {
                 emitter.EmitDeath();
+                emitter.ClearListeners();
             }
 
             Despawn();
         }
     }
 
+    public override void ResetHealth ()
+    {
+        currentHealth = baseHealth;
+    }
+
     void Despawn()
     {
-        DestroyObject(gameObject);
+        ObjectPool.Instance.ReleaseObject(gameObject);
     }
 }

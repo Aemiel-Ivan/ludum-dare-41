@@ -35,6 +35,11 @@ public class ObjectPool : MonoBehaviour {
 
     public GameObject GetObject (GameObject prefab)
     {
+        return GetObject(prefab, transform);
+    }
+
+    public GameObject GetObject (GameObject prefab, Transform parent)
+    {
         Register(prefab);
         List<GameObject> objects = pool[prefab.name];
 

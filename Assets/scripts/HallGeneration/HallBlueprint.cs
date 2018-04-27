@@ -11,6 +11,9 @@ public class HallBlueprint : ScriptableObject {
     [SerializeField]
     List<HallBlueprintEnemy> enemies;
 
+    [SerializeField]
+    List<HallBlueprintSpawner> spawners;
+
     public void Construct (GameObject map)
     {
         GameObject.FindGameObjectWithTag("Blockee")
@@ -19,6 +22,11 @@ public class HallBlueprint : ScriptableObject {
         foreach (HallBlueprintEnemy enemy in enemies)
         {
             enemy.Spawn(map.transform);
+        }
+
+        foreach (HallBlueprintSpawner spawner in spawners)
+        {
+            spawner.Spawn(map.transform);
         }
     }
 

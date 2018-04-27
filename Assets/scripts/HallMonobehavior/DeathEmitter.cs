@@ -22,4 +22,9 @@ public class DeathEmitter : MonoBehaviour {
             d.Notify(this);
         }
     }
+
+    public void ClearListeners()
+    {
+        listeners.Clear();
+    }
 }
