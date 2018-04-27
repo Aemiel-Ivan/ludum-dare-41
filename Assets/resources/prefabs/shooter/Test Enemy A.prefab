@@ -24,6 +24,8 @@ GameObject:
   - component: {fileID: 212276936106809214}
   - component: {fileID: 114684755873603638}
   - component: {fileID: 114508302432500742}
+  - component: {fileID: 114266623220311234}
+  - component: {fileID: 114180662501573604}
   m_Layer: 0
   m_Name: Test Enemy A
   m_TagString: Hall Enemy
@@ -89,6 +91,29 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &114180662501573604
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1598259252942562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0be392d2d0c9558449ddd1eae67df85b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseHealth: 10
+--- !u!114 &114266623220311234
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1598259252942562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e16c33fdc0a9544428b819f84985fad3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114508302432500742
 MonoBehaviour:
   m_ObjectHideFlags: 1
