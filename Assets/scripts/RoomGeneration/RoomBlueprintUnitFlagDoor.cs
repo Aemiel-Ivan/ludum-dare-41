@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [System.Serializable]
 public class RoomBlueprintUnitFlagDoor : RoomBlueprintUnitFlag
@@ -8,17 +6,26 @@ public class RoomBlueprintUnitFlagDoor : RoomBlueprintUnitFlag
     [SerializeField]
     protected string room;
 
+    [SerializeField]
+    protected string alternateRoom;
+
     public override GameObject construct(GameObject prefab, Transform parent)
     {
         GameObject created = base.construct(prefab, parent);
 
-        Door door = created.GetComponent<Door>();
-        if (door != null)
+        Door[] doors = created.GetComponents<Door>();
+        foreach (Door door in doors)
         {
-            door.Setup(
-                flag,
-                room
-                );
+            if (door.IsAlternate)
+            {
+                door.Setup(flag,
+                    alternateRoom);
+            }
+            else
+            {
+                door.Setup(flag,
+                    room);
+            }
         }
 
         return created;

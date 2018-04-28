@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class RoomMap : MonoBehaviour {
     private RoomBlueprint blueprint;
+    public string roomBlueprintDirectory;
     private string currentRoom;
 
     private static int floorY = 0;
     private static int ceilY = 11;
     private static int leftWallX = 0;
     private static int rightWallX = 14;
-
-	// Use this for initialization
+    
 	void Start () {
         construct();
 	}
@@ -27,6 +27,7 @@ public class RoomMap : MonoBehaviour {
         deconstruct();
 
         this.currentRoom = RoomTracker.CurrentRoom;
+        Debug.Log("Inside room " + currentRoom);
 
         loadWalls();
         loadBlueprint();
@@ -55,7 +56,7 @@ public class RoomMap : MonoBehaviour {
 	
 	private void loadBlueprint ()
     {
-        blueprint = Resources.Load<RoomBlueprint>("blueprints/rooms/" + currentRoom);
+        blueprint = Resources.Load<RoomBlueprint>(roomBlueprintDirectory + currentRoom);
         blueprint.construct(gameObject);
     }
 }

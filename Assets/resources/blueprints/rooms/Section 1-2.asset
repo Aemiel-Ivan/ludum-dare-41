@@ -11,19 +11,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25c0648d02260014cb3557c45130c5ae, type: 3}
   m_Name: Section 1-2
   m_EditorClassIdentifier: 
+  spaceShips:
+  - startPosition: {x: 6, y: 1}
+    dimensions: {x: 3, y: 3}
+    flag: S1
+    room: Section 2-1
+    alternateRoom: Section 1-1
   doors:
   - startPosition: {x: 3, y: 1}
     dimensions: {x: 2, y: 3}
     flag: T
     room: B
+    alternateRoom: 
   - startPosition: {x: 10, y: 1}
     dimensions: {x: 2, y: 3}
     flag: T
     room: A
-  - startPosition: {x: 6, y: 1}
-    dimensions: {x: 3, y: 3}
-    flag: S1
-    room: Section 1-1
+    alternateRoom: 
   blocks: []
   movableBlocks: []
   spikes: []

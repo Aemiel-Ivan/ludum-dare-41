@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b44d6e426f6d97743be683ad7894e83f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roomBlueprintDirectory: blueprints/rooms/
 --- !u!1 &675715384
 GameObject:
   m_ObjectHideFlags: 0

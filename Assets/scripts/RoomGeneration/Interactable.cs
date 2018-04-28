@@ -1,10 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Interactable : MonoBehaviour {
 
     protected string flag;
+
+    [SerializeField]
+    protected bool isAlternate;
+    public bool IsAlternate
+    {
+        get { return isAlternate; }
+    }
 
     public virtual void Setup(string flag)
     {

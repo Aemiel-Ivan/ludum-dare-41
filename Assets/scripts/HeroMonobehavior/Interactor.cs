@@ -12,14 +12,29 @@ public class Interactor : MonoBehaviour {
     }
 	
 	public void Update () {
-        if (Input.GetKeyDown(KeyCode.Z))
+        bool zKeyDown = Input.GetKeyDown(KeyCode.Z);
+        bool xKeyDown = Input.GetKeyDown(KeyCode.X);
+
+        if (zKeyDown || xKeyDown)
         {
-            foreach (GameObject interactableTarget in interactableTargets)
+            for (int i = interactableTargets.Count - 1; i >= 0; i--)
             {
-                Interactable interactable = interactableTarget.GetComponent<Interactable>();
-                if (interactable != null)
+                if (this.gameObject == null)
                 {
-                    interactable.Interact();
+                    Debug.Log("LOL");
+                    return;
+                }
+                Interactable[] interactables = interactableTargets[i].GetComponents<Interactable>();
+                for (int j = interactables.Length - 1; j >= 0; j--)
+                {
+                    if (zKeyDown && !interactables[j].IsAlternate)
+                    {
+                        interactables[j].Interact();
+                    }
+                    if (xKeyDown && interactables[j].IsAlternate)
+                    {
+                        interactables[j].Interact();
+                    }
                 }
             }
         }

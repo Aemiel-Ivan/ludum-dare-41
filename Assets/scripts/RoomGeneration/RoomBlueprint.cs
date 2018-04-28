@@ -10,13 +10,16 @@ public class RoomBlueprint : ScriptableObject {
     private static GameObject switchPrefab;
     private static GameObject pressurePlatePrefab;
     private static GameObject doorPrefab;
+    private static GameObject spaceShipPrefab;
+
+    private static string prefabDirectory = "prefabs/blocks/";
 
     public static GameObject BlockPrefab {
         get
         {
             if (blockPrefab == null)
             {
-                blockPrefab = Resources.Load<GameObject>("prefabs/blocks/block");
+                blockPrefab = Resources.Load<GameObject>(prefabDirectory + "block");
             }
 
             return blockPrefab;
@@ -28,7 +31,7 @@ public class RoomBlueprint : ScriptableObject {
         {
             if (movableBlockPrefab == null)
             {
-                movableBlockPrefab = Resources.Load<GameObject>("prefabs/blocks/movable block");
+                movableBlockPrefab = Resources.Load<GameObject>(prefabDirectory + "movable block");
             }
 
             return movableBlockPrefab;
@@ -41,7 +44,7 @@ public class RoomBlueprint : ScriptableObject {
         {
             if (spikePrefab == null)
             {
-                spikePrefab = Resources.Load<GameObject>("prefabs/blocks/spike");
+                spikePrefab = Resources.Load<GameObject>(prefabDirectory + "spike");
             }
 
             return spikePrefab;
@@ -54,7 +57,7 @@ public class RoomBlueprint : ScriptableObject {
         {
             if (switchPrefab == null)
             {
-                switchPrefab = Resources.Load<GameObject>("prefabs/blocks/switch");
+                switchPrefab = Resources.Load<GameObject>(prefabDirectory + "switch");
             }
 
             return switchPrefab;
@@ -67,7 +70,7 @@ public class RoomBlueprint : ScriptableObject {
         {
             if (pressurePlatePrefab == null)
             {
-                pressurePlatePrefab = Resources.Load<GameObject>("prefabs/blocks/pressure plate");
+                pressurePlatePrefab = Resources.Load<GameObject>(prefabDirectory + "pressure plate");
             }
 
             return pressurePlatePrefab;
@@ -80,15 +83,31 @@ public class RoomBlueprint : ScriptableObject {
         {
             if (doorPrefab == null)
             {
-                doorPrefab = Resources.Load<GameObject>("prefabs/blocks/door");
+                doorPrefab = Resources.Load<GameObject>(prefabDirectory + "door");
             }
 
             return doorPrefab;
         }
     }
 
+    public static GameObject SpaceShipPrefab
+    {
+        get
+        {
+            if (spaceShipPrefab == null)
+            {
+                spaceShipPrefab = Resources.Load<GameObject>(prefabDirectory + "space ship");
+            }
+
+            return spaceShipPrefab;
+        }
+    }
+
     [SerializeField]
-    private List<RoomBlueprintUnitFlagDoor> doors;
+    private List<RoomBlueprintUnitFlagDoor> spaceShips = new List<RoomBlueprintUnitFlagDoor>();
+
+    [SerializeField]
+    private List<RoomBlueprintUnitFlagDoor> doors = new List<RoomBlueprintUnitFlagDoor>();
 
     [SerializeField]
     private List<RoomBlueprintUnitDynamic> blocks = new List<RoomBlueprintUnitDynamic>();
@@ -144,6 +163,11 @@ public class RoomBlueprint : ScriptableObject {
                 blockee.transform.position = door.transform.position;
                 blockee.GetComponent<KillableHero>().spawnPoint = door.transform.position;
             }
+        }
+
+        foreach (RoomBlueprintUnitFlagDoor block in spaceShips)
+        {
+            block.construct(SpaceShipPrefab, map.transform);
         }
     }
 

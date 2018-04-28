@@ -1,9 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class Door : Interactable {
-
+﻿public class Door : Interactable {
+    
     protected string room;
 
     public override void Setup(string flag)
@@ -22,7 +18,7 @@ public class Door : Interactable {
     {
         base.Interact();
 
-        if (GlobalFlags.IsSet(flag))
+        if (GlobalFlags.IsSet(flag) || IsAlternate)
         {
             RoomTracker.MoveToRoom(room);
         }
