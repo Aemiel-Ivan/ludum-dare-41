@@ -126,15 +126,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rapidFireCount: 3
-  repRest: 0.3
-  setRest: 1
+  repRest: 0.6
+  setRest: 2
   bulletPrefab: {fileID: 1729574064578500, guid: 4c8b96d4c182bcc4aa0bb1f061092695,
     type: 2}
   Shooting: 1
   directions:
+  - {x: -0.5, y: -0.5}
   - {x: 0, y: -1}
-  - {x: -0.5, y: -1}
-  - {x: 0.5, y: -1}
+  - {x: 0.5, y: -0.5}
 --- !u!114 &114684755873603638
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -146,11 +146,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62297e0a6d171a941b50f48c082ca786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iteneraries:
-  - {x: 3, y: 5}
-  - {x: 0, y: 7}
-  - {x: -3, y: 5}
-  period: 6
+  directions:
+  - {x: -3, y: -3}
+  - {x: 3, y: -3}
+  - {x: 3, y: 3}
+  period: 8
 --- !u!212 &212276936106809214
 SpriteRenderer:
   m_ObjectHideFlags: 1

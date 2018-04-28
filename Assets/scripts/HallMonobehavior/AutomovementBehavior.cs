@@ -6,7 +6,7 @@ public abstract class AutomovementBehavior : MonoBehaviour {
 
     protected Rigidbody2D rbody;
     
-    private Vector2 readyPosition;
+    protected Vector2 readyPosition;
     private float positioningSpeed;
     private bool positioned = true;
 
@@ -21,6 +21,11 @@ public abstract class AutomovementBehavior : MonoBehaviour {
         this.readyPosition = readyPosition;
         this.positioningSpeed = (readyPosition - initialPosition).magnitude / positioningDuration;
         this.positioned = false;
+        SetupHook();
+    }
+
+    protected virtual void SetupHook()
+    {
     }
 
     void FixedUpdate ()

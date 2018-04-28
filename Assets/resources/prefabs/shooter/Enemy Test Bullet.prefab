@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: Blockee
-  speed: 10
+  speed: 5
 --- !u!212 &212980465776106344
 SpriteRenderer:
   m_ObjectHideFlags: 1
