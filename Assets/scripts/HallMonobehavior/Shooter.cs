@@ -15,11 +15,15 @@ public abstract class Shooter : MonoBehaviour {
     [SerializeField]
     private GameObject bulletPrefab;
 
+    [SerializeField]
+    private bool clearBulletsOnDeath;
+
     public bool Shooting;
 
     private int repCount;
     private float restToRep;
     private float restToSet;
+    private DeathEmitter emitter;
 
     protected abstract List<Vector2> GetDirections();
 
@@ -29,6 +33,11 @@ public abstract class Shooter : MonoBehaviour {
         restToSet = 0;
         restToRep = 0;
         Shooting = true;
+
+        if (clearBulletsOnDeath)
+        {
+            emitter = GetComponent<DeathEmitter>();
+        }
     }
 
     private void Update()
@@ -67,6 +76,13 @@ public abstract class Shooter : MonoBehaviour {
 
     private GameObject SpawnBullet ()
     {
-        return ObjectPool.Instance.GetObject(bulletPrefab);
+        GameObject bullet = ObjectPool.Instance.GetObject(bulletPrefab);
+
+        if (clearBulletsOnDeath && emitter != null)
+        {
+            emitter.Subscribe(bullet.GetComponent<Bullet>());
+        }
+
+        return bullet;
     }
 }

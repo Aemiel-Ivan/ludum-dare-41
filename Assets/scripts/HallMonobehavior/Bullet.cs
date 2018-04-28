@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour {
+public class Bullet : MonoBehaviour, DeathListener {
 
     [SerializeField]
     private string target;
@@ -47,5 +47,10 @@ public class Bullet : MonoBehaviour {
     private void Despawn()
     {
         ObjectPool.Instance.ReleaseObject(gameObject);
+    }
+
+    public void Notify(DeathEmitter d)
+    {
+        Despawn();
     }
 }

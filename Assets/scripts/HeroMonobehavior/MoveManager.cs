@@ -3,16 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MoveManager : MonoBehaviour {
-
-    [SerializeField]
-    private float speedLimit;
-
+    List<MovementDecorator> decorators;
     List<Mover> movers;
     Rigidbody2D rbody;
     Animator animator;
     bool facingRight;
     
 	void Awake () {
+        this.decorators = new List<MovementDecorator>(GetComponents<MovementDecorator>());
+        this.decorators.Sort((x, y) => x.order.CompareTo(y.order));
         this.movers = new List<Mover>(GetComponents<Mover>());
         this.rbody = GetComponent<Rigidbody2D>();
         this.animator = GetComponent<Animator>();
@@ -41,16 +40,16 @@ public class MoveManager : MonoBehaviour {
             Vector2 delta = mover.MoverFixedUpdate();
             movement += delta;
         }
+        
+        foreach (MovementDecorator decorator in decorators)
+        {
+            movement = decorator.Decorate(movement);
+        }
 
         bool newFacingRight = movement.x > 0;
         if (movement.x != 0 && newFacingRight != facingRight)
         {
             Flip();
-        }
-
-        if (speedLimit != 0)
-        {
-            movement = movement.normalized * speedLimit * Time.fixedDeltaTime;
         }
 
         rbody.MovePosition(rbody.position + movement);

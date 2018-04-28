@@ -212,6 +212,8 @@ GameObject:
   - component: {fileID: 1728192673}
   - component: {fileID: 1728192674}
   - component: {fileID: 1728192675}
+  - component: {fileID: 1728192676}
+  - component: {fileID: 1728192677}
   m_Layer: 0
   m_Name: Blockee
   m_TagString: Blockee
@@ -307,9 +309,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01d6e7286edb39340a5ccf0bc888067e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
---- !u!61 &1728192669
-BoxCollider2D:
+  moveSpeed: 100
+--- !u!58 &1728192669
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -321,18 +323,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.5, y: 1.5}
-    newSize: {x: 1.5, y: 1.5}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Radius: 0.2
 --- !u!114 &1728192670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344,7 +336,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46e1c8ff488f39743bf3cc38b8430444, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedLimit: 5
 --- !u!95 &1728192671
 Animator:
   serializedVersion: 3
@@ -373,7 +364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e84578eca4a42419f657d3ddf12fed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 100
 --- !u!114 &1728192673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -415,6 +406,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9ee963508911f8499ae9d8dfe826bbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1728192676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1728192664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5dc07157b4992447b6e6a577552063d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  order: 0
+  speedLimit: 7
+--- !u!114 &1728192677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1728192664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8e5d023651c71e4b9afaae090b0cd67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  order: 1
 --- !u!1 &1863884888
 GameObject:
   m_ObjectHideFlags: 0
