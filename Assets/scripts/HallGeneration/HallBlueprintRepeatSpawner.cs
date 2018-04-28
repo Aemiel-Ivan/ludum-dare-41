@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class HallBlueprintSpawner {
+public class HallBlueprintRepeatSpawner {
     [SerializeField]
     private Vector2 initialPosition;
 
@@ -22,24 +22,29 @@ public class HallBlueprintSpawner {
     [SerializeField]
     private int spawnCap;
 
-    private static GameObject spawnerPrefab;
-    private static GameObject SpawnerPrefab
+    private static GameObject repeatSpawnerPrefab;
+    private static GameObject RepeatSpawnerPrefab
     {
         get
         {
-            if (spawnerPrefab == null)
+            if (repeatSpawnerPrefab == null)
             {
-                spawnerPrefab = Resources.Load<GameObject>("prefabs/shooter/spawner");
+                System.Type[] components = new System.Type[] { typeof(RepeatSpawner) };
+                repeatSpawnerPrefab = new GameObject("Repeat Spawner", components);
+                repeatSpawnerPrefab.SetActive(false);
+                repeatSpawnerPrefab.hideFlags = HideFlags.HideInHierarchy;
             }
 
-            return spawnerPrefab;
+            return repeatSpawnerPrefab;
         }
     }
 
     public GameObject Spawn(Transform parent)
     {
-        GameObject unit = GameObject.Instantiate(SpawnerPrefab, parent);
-        Spawner spawner = unit.GetComponent<Spawner>();
+        GameObject unit = GameObject.Instantiate(RepeatSpawnerPrefab, parent);
+        unit.SetActive(true);
+
+        RepeatSpawner spawner = unit.GetComponent<RepeatSpawner>();
         spawner.enemyPrefab = enemyPrefab;
         spawner.readyPosition = readyPosition;
         spawner.positioningDuration = positioningDuration;

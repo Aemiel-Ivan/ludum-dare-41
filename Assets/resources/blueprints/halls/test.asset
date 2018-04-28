@@ -13,18 +13,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blockeeInitialPosition: {x: 0, y: -4}
   enemies: []
-  spawners:
-  - initialPosition: {x: -5, y: 12}
+  repeatSpawners: []
+  delaySpawners:
+  - initialPosition: {x: -5, y: 10}
     enemyPrefab: {fileID: 1598259252942562, guid: e98b160a4a5469a4f94da9a1b0099c4d,
       type: 2}
     readyPosition: {x: -5, y: 5}
-    positioningDuration: 3
-    spawnRest: 2
-    spawnCap: 2
-  - initialPosition: {x: 5, y: 12}
+    positioningDuration: 2
+    delay: 3
+  - initialPosition: {x: 5, y: 10}
     enemyPrefab: {fileID: 1598259252942562, guid: e98b160a4a5469a4f94da9a1b0099c4d,
       type: 2}
     readyPosition: {x: 5, y: 5}
-    positioningDuration: 3
-    spawnRest: 2
-    spawnCap: 2
+    positioningDuration: 2
+    delay: 6

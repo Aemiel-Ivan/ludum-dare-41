@@ -2,30 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spawner : MonoBehaviour, DeathListener {
+public abstract class Spawner : MonoBehaviour
+{
     public GameObject enemyPrefab;
     public Vector2 readyPosition;
     public float positioningDuration;
-    public float spawnRest;
-    public int spawnCap;
 
-    private float restToSpawn;
-    private int livingSpawn;
-
-    void Update()
-    {
-        if (spawnCap <= 0 || livingSpawn < spawnCap)
-        {
-            restToSpawn -= Time.deltaTime;
-            if (restToSpawn <= 0)
-            {
-                restToSpawn += spawnRest;
-                SpawnEnemy();
-            }
-        }
-    }
-
-    void SpawnEnemy ()
+    protected void SpawnEnemy()
     {
         GameObject enemy = ObjectPool.Instance.GetObject(enemyPrefab);
 
@@ -38,18 +21,8 @@ public class Spawner : MonoBehaviour, DeathListener {
                 .Setup(transform.position, readyPosition, positioningDuration);
         }
 
-        if (spawnCap > 0)
-        {
-            livingSpawn++;
-            enemy.GetComponent<DeathEmitter>().Subscribe(this);
-        }
+        SpawnHook(enemy);
     }
 
-    public void Notify(DeathEmitter d)
-    {
-        if (spawnCap > 0)
-        {
-            livingSpawn--;
-        }
-    }
+    protected abstract void SpawnHook(GameObject enemy);
 }

@@ -12,7 +12,10 @@ public class HallBlueprint : ScriptableObject {
     List<HallBlueprintEnemy> enemies;
 
     [SerializeField]
-    List<HallBlueprintSpawner> spawners;
+    List<HallBlueprintRepeatSpawner> repeatSpawners;
+
+    [SerializeField]
+    List<HallBlueprintDelaySpawner> delaySpawners;
 
     public void Construct (GameObject map)
     {
@@ -24,7 +27,12 @@ public class HallBlueprint : ScriptableObject {
             enemy.Spawn(map.transform);
         }
 
-        foreach (HallBlueprintSpawner spawner in spawners)
+        foreach (HallBlueprintRepeatSpawner spawner in repeatSpawners)
+        {
+            spawner.Spawn(map.transform);
+        }
+
+        foreach (HallBlueprintDelaySpawner spawner in delaySpawners)
         {
             spawner.Spawn(map.transform);
         }
