@@ -23,9 +23,12 @@ GameObject:
   - component: {fileID: 50672281012054212}
   - component: {fileID: 212276936106809214}
   - component: {fileID: 114684755873603638}
-  - component: {fileID: 114508302432500742}
   - component: {fileID: 114266623220311234}
   - component: {fileID: 114180662501573604}
+  - component: {fileID: 114508302432500742}
+  - component: {fileID: 114651806608660006}
+  - component: {fileID: 114209382082952180}
+  - component: {fileID: 114210132534519318}
   m_Layer: 0
   m_Name: Test Enemy A
   m_TagString: Hall Enemy
@@ -103,6 +106,43 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseHealth: 10
+--- !u!114 &114209382082952180
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1598259252942562}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 539ad66a7ee15204d9b6c67aeeb73efa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rapidFireCount: 1
+  repRest: 0
+  setRest: 0.4
+  bulletPrefab: {fileID: 1729574064578500, guid: 4c8b96d4c182bcc4aa0bb1f061092695,
+    type: 2}
+  Shooting: 1
+  bulletCount: 10
+--- !u!114 &114210132534519318
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1598259252942562}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21884c7b81caa724daf8f769e33a5622, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rapidFireCount: 3
+  repRest: 0.3
+  setRest: 1
+  bulletPrefab: {fileID: 1729574064578500, guid: 4c8b96d4c182bcc4aa0bb1f061092695,
+    type: 2}
+  Shooting: 1
+  bulletCount: 7
+  degreesRange: 180
 --- !u!114 &114266623220311234
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -120,7 +160,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1598259252942562}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5f0343a6cc4fd54080ed79da4fe74da, type: 3}
   m_Name: 
@@ -135,6 +175,26 @@ MonoBehaviour:
   - {x: -0.5, y: -0.5}
   - {x: 0, y: -1}
   - {x: 0.5, y: -0.5}
+--- !u!114 &114651806608660006
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1598259252942562}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f0d2d9271f2d6a408580e4b43bb198b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rapidFireCount: 1
+  repRest: 0.1
+  setRest: 0.1
+  bulletPrefab: {fileID: 1729574064578500, guid: 4c8b96d4c182bcc4aa0bb1f061092695,
+    type: 2}
+  Shooting: 1
+  direction: {x: 0, y: 1}
+  deltaDegrees: 15
+  bulletCount: 3
 --- !u!114 &114684755873603638
 MonoBehaviour:
   m_ObjectHideFlags: 1
