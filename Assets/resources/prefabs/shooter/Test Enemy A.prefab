@@ -139,11 +139,11 @@ MonoBehaviour:
   rapidFireCount: 3
   repRest: 0.3
   setRest: 1
-  bulletPrefab: {fileID: 1729574064578500, guid: 4c8b96d4c182bcc4aa0bb1f061092695,
+  bulletPrefab: {fileID: 1197639151730636, guid: 33e425a97e26178489c7eec4f858c1d9,
     type: 2}
   clearBulletsOnDeath: 1
   Shooting: 1
-  bulletCount: 7
+  bulletCount: 5
   degreesRange: 180
 --- !u!114 &114266623220311234
 MonoBehaviour:

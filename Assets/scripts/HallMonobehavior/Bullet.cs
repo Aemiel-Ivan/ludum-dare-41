@@ -21,6 +21,7 @@ public class Bullet : MonoBehaviour, DeathListener {
     public void Setup (Vector2 position, Vector2 direction)
     {
         this.transform.position = position;
+        this.transform.rotation = Quaternion.Euler(0, 0, Vector2.SignedAngle(Vector2.down, direction));
         this.velocity = direction.normalized * speed;
     }
 	
