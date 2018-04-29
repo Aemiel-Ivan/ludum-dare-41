@@ -9,6 +9,7 @@ public class KillableHero : MonoBehaviour {
     [SerializeField]
     private float sleepTime;
 
+    private MoveManager moveManager;
     private SpriteRenderer spriteRenderer;
     private float sleepRemaining;
     private bool alive;
@@ -20,6 +21,7 @@ public class KillableHero : MonoBehaviour {
     private void Awake ()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        moveManager = GetComponent<MoveManager>();
     }
 
     private void Update()
@@ -32,6 +34,8 @@ public class KillableHero : MonoBehaviour {
             {
                 alive = true;
                 spriteRenderer.enabled = true;
+                moveManager.enabled = true;
+                moveManager.Reset();
             }
         }
     }
@@ -41,6 +45,7 @@ public class KillableHero : MonoBehaviour {
         sleepRemaining = sleepTime;
         alive = false;
         spriteRenderer.enabled = false;
+        moveManager.enabled = false;
         transform.SetParent(transform.root);
         transform.position = spawnPoint;
     }

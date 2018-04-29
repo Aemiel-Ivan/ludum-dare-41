@@ -64,4 +64,12 @@ public class MoveManager : MonoBehaviour {
             transform.localScale.z
             );
     }
+
+    public void Reset()
+    {
+        foreach (Mover mover in movers)
+        {
+            mover.Reset();
+        }
+    }
 }

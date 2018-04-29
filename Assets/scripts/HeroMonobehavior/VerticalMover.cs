@@ -29,4 +29,8 @@ public class VerticalMover : Mover {
         Vector2 positionDelta = Vector2.up * (direction * moveSpeed * Time.fixedDeltaTime);
         return positionDelta;
     }
+
+    public override void Reset()
+    {
+    }
 }

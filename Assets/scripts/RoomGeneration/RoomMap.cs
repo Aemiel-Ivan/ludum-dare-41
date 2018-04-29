@@ -42,6 +42,8 @@ public class RoomMap : MonoBehaviour {
         {
             Destroy(child.gameObject);
         }
+
+        ObjectPool.Instance.Clear();
     }
 
     private void loadWalls()

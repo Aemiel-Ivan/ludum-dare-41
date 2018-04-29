@@ -57,6 +57,20 @@ public class ObjectPool : MonoBehaviour {
         return newObject;
     }
 
+    public void Clear()
+    {
+        foreach (KeyValuePair<string, List<GameObject>> list in pool)
+        {
+            foreach (GameObject item in list.Value)
+            {
+                if (item.activeInHierarchy)
+                {
+                    ReleaseObject(item);
+                }
+            }
+        }
+    }
+
     public void ReleaseObject (GameObject item)
     {
         item.SetActive(false);

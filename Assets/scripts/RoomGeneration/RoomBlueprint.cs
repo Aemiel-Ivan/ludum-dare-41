@@ -11,6 +11,8 @@ public class RoomBlueprint : ScriptableObject {
     private static GameObject pressurePlatePrefab;
     private static GameObject doorPrefab;
     private static GameObject spaceShipPrefab;
+    private static GameObject targetTurretPrefab;
+    private static GameObject spreadTurretPrefab;
 
     private static string prefabDirectory = "prefabs/blocks/";
 
@@ -103,6 +105,32 @@ public class RoomBlueprint : ScriptableObject {
         }
     }
 
+    public static GameObject TargetTurretPrefab
+    {
+        get
+        {
+            if (spaceShipPrefab == null)
+            {
+                targetTurretPrefab = Resources.Load<GameObject>(prefabDirectory + "target turret");
+            }
+
+            return targetTurretPrefab;
+        }
+    }
+
+    public static GameObject SpreadTurretPrefab
+    {
+        get
+        {
+            if (spreadTurretPrefab == null)
+            {
+                spreadTurretPrefab = Resources.Load<GameObject>(prefabDirectory + "spread turret");
+            }
+
+            return spreadTurretPrefab;
+        }
+    }
+
     [SerializeField]
     private List<RoomBlueprintUnitFlagDoor> spaceShips = new List<RoomBlueprintUnitFlagDoor>();
 
@@ -123,6 +151,12 @@ public class RoomBlueprint : ScriptableObject {
 
     [SerializeField]
     private List<RoomBlueprintUnitFlagSwitch> switches = new List<RoomBlueprintUnitFlagSwitch>();
+    
+    [SerializeField]
+    private List<RoomBlueprintUnit> targetTurrets = new List<RoomBlueprintUnit>();
+
+    [SerializeField]
+    private List<RoomBlueprintUnit> spreadTurrets = new List<RoomBlueprintUnit>();
 
     public void construct(GameObject map)
     {
@@ -168,6 +202,16 @@ public class RoomBlueprint : ScriptableObject {
         foreach (RoomBlueprintUnitFlagDoor block in spaceShips)
         {
             block.construct(SpaceShipPrefab, map.transform);
+        }
+
+        foreach (RoomBlueprintUnit block in targetTurrets)
+        {
+            block.construct(TargetTurretPrefab, map.transform);
+        }
+
+        foreach (RoomBlueprintUnit block in spreadTurrets)
+        {
+            block.construct(SpreadTurretPrefab, map.transform);
         }
     }
 

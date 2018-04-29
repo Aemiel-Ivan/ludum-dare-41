@@ -94,4 +94,11 @@ public class Jumper : Faller {
 
         this.touchingCeil = false;
     }
+
+    public override void Reset()
+    {
+        base.Reset();
+        this.jump = false;
+        this.touchingCeil = false;
+    }
 }

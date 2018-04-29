@@ -129,4 +129,11 @@ public class Faller : Mover
             transform.SetParent(transform.root);
         }
     }
+
+    public override void Reset ()
+    {
+        transform.SetParent(transform.root);
+        currentVelocity = 0;
+        footing = null;
+    }
 }

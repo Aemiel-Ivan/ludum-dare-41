@@ -32,4 +32,8 @@ public class HorizontalMover : Mover {
         Vector2 positionDelta = Vector2.right * (direction * moveSpeed * Time.fixedDeltaTime);
         return positionDelta;
     }
+
+    public override void Reset()
+    {
+    }
 }

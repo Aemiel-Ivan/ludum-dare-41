@@ -23,7 +23,6 @@ GameObject:
   - component: {fileID: 58097983718313506}
   - component: {fileID: 50075533886485796}
   - component: {fileID: 114462879097761142}
-  - component: {fileID: 114922435122292024}
   - component: {fileID: 114436364778656122}
   m_Layer: 0
   m_Name: turret target bullet
@@ -105,17 +104,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: Blockee
   speed: 5
---- !u!114 &114922435122292024
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1197639151730636}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cff03f27eec2994491887a5273b07f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &212721568202578068
 SpriteRenderer:
   m_ObjectHideFlags: 1
